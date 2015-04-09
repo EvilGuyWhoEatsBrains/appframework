@@ -878,7 +878,15 @@
          * @title $.afui.runTransition(transition,oldDiv,currDiv,back)
          */
         runTransition: function(transition,previous,target, back,noTrans) {
-
+         
+            if (typeof previous !== "undefined" && previous !== null) {
+                if(previous.find) {
+                    setTimeout(function(){
+                        previous.find(".active").removeClass("active");
+                    },500);
+                }
+            }
+            
             if(!transition)
                 transition="slide";
 
